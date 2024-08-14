@@ -1,9 +1,14 @@
 extends CharacterBody2D
 
+var speed = 300
+var bullet_scene = preload("res://scenes/bullet.tscn")
 
+func _process(delta):
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 func _physics_process(delta):
-	var speed = 250
+	
 	var screen_size = get_viewport().get_visible_rect().size
 	velocity = Vector2(0,0)
 	if Input.is_action_pressed("move_right"):
@@ -36,3 +41,10 @@ func _physics_process(delta):
 	# Clamp the player's position to the screen using a Vector2
 	# This replaces all statements above
 	global_position = global_position.clamp(Vector2(0,0), screen_size)
+
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	bullet.name = "Bullet_%s" % str(bullet.get_instance_id())  # Set a unique name for each bullet
+	get_parent().add_child(bullet)
+	bullet.global_position = global_position
+	bullet.global_position.x += 75

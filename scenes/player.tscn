@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_e4e8j"]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 50
 position = Vector2(100, 123)
 rotation = 1.5708
 scale = Vector2(0.246833, 0.246833)
