@@ -44,7 +44,7 @@ func _physics_process(delta):
 
 func shoot():
 	var bullet = bullet_scene.instantiate()
-	bullet.name = "Bullet_%s" % str(bullet.get_instance_id())  # Set a unique name for each bullet
+	# bullet.name = "Bullet_%s" % str(bullet.get_instance_id())  # Set a unique name for each bullet
 	get_parent().add_child(bullet)
 	bullet.global_position = global_position
 	bullet.global_position.x += 75

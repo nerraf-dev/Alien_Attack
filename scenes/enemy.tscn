@@ -13,6 +13,8 @@ height = 125.686
 
 [node name="Enemy" type="Area2D"]
 scale = Vector2(0.3, 0.3)
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_8hopp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

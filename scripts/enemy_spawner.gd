@@ -1,7 +1,9 @@
 extends Node2D
 
-
 var enemy_scene = preload("res://scenes/enemy.tscn")
+
+# create "random" spawn positions
+@onready var spawn_positions = $SpawnPositions.get_children()
 
 func _on_timer_timeout():
 	print("Spawn enemy")
@@ -9,7 +11,10 @@ func _on_timer_timeout():
 
 
 func spawn_enemy():
+	
 	var enemy = enemy_scene.instantiate()
-	enemy.name = "Enemy_%s" % str(enemy.get_instance_id())  # Set a unique name for each enemy
+	var random_pos = spawn_positions.pick_random()
+	print(random_pos.name)
+	# enemy.name = "Enemy_%s" % str(enemy.get_instance_id())  # Set a unique name for each enemy
+	enemy.global_position = random_pos.global_position
 	add_child(enemy)
-	enemy.global_position = Vector2(1350, 300)
