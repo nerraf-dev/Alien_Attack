@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal took_damage
+
 var speed = 300
 var bullet_scene = preload("res://scenes/bullet.tscn")
 
@@ -48,3 +50,11 @@ func shoot():
 	get_parent().add_child(bullet)
 	bullet.global_position = global_position
 	bullet.global_position.x += 75
+
+func take_damage():
+	print("Player took damage")
+	emit_signal("took_damage")
+
+func die():
+	print("Player died!")
+	queue_free()

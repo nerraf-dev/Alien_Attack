@@ -1,6 +1,8 @@
 extends Area2D
 
-@export var enemy_speed = 250
+signal died
+
+@export var enemy_speed = 300
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -10,3 +12,10 @@ func _physics_process(delta):
 func die():
 	print("Enemy died")
 	queue_free()
+	emit_signal("died")
+
+func _on_body_entered(body:Node2D):
+	print("Enemy collided with ", body.name)
+	body.take_damage()
+	die()
+

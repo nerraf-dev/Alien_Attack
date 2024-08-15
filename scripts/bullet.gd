@@ -20,7 +20,7 @@ func _physics_process(delta):
 	if delta == null:
 		print("delta is null")
 		return
-	print("global_position.x: ", global_position.x)
+	# print("global_position.x: ", global_position.x)
 	global_position.x += speed * delta 
 
 
