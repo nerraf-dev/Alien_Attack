@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://2xm7mfhinfg0"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_6tcr3"]
+[ext_resource type="FontFile" uid="uid://coe4i6xycsb21" path="res://assets/font/Kenney Blocks.ttf" id="1_gh420"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qhpc"]
+bg_color = Color(0.0676236, 0.119396, 0.459808, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.803922, 0.768627, 0.313726)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_i8vxd"]
+font = ExtResource("1_gh420")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_tp0dc"]
+font = ExtResource("1_gh420")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_2thoc"]
+font = ExtResource("1_gh420")
+font_size = 38
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45k21"]
+bg_color = Color(0.0862745, 0.705882, 0.364706, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6tcr3")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -381.0
+offset_top = -204.0
+offset_right = 383.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3qhpc")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 34.0
+offset_right = 180.0
+offset_bottom = 106.0
+grow_horizontal = 2
+text = "Game Over!!"
+label_settings = SubResource("LabelSettings_i8vxd")
+
+[node name="FinalScore" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -27.0
+offset_right = 132.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Final Score:"
+label_settings = SubResource("LabelSettings_tp0dc")
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = 32.0
+offset_right = 189.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "_final_score_"
+label_settings = SubResource("LabelSettings_2thoc")
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -112.0
+offset_right = 96.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(4.81308e-08, 1.44392e-07, 0.311359, 1)
+theme_override_fonts/font = ExtResource("1_gh420")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_45k21")
+text = "Retry"
+
+[connection signal="pressed" from="Panel/Retry" to="." method="_on_retry_pressed"]

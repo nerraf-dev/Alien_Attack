@@ -12,6 +12,10 @@ size = Vector2(62.4549, 27.8731)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ppl3t")
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("5_0ptbk")]
+
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1282.0
 offset_bottom = 724.0
@@ -33,10 +37,6 @@ collision_mask = 2
 position = Vector2(-1.57895, 20.6522)
 scale = Vector2(0.593142, 1.64402)
 shape = SubResource("RectangleShape2D_8w8p5")
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="UI" instance=ExtResource("5_0ptbk")]
 
 [connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]
