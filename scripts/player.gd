@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var shot_fired = $Shoot
+
 signal took_damage
 
 var speed = 300
@@ -48,6 +50,7 @@ func shoot():
 	var bullet = bullet_scene.instantiate()
 	# bullet.name = "Bullet_%s" % str(bullet.get_instance_id())  # Set a unique name for each bullet
 	get_parent().add_child(bullet)
+	shot_fired.play()
 	bullet.global_position = global_position
 	bullet.global_position.x += 75
 

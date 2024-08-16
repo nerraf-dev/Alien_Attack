@@ -3,6 +3,8 @@ extends Node2D
 @onready var player = $Player
 @onready var hud = $UI/HUD
 @onready var ui = $UI
+@onready var enemy_hit = $EnemyHit
+@onready var explode = $Explode
 
 var game_over_screen = preload("res://scenes/game_over_screen.tscn")
 var player_lives = 3
@@ -21,6 +23,7 @@ func _on_death_zone_area_entered(area:Area2D):
 
 # Player took damage
 func _on_player_took_damage():
+	explode.play()
 	player_lives -= 1
 	hud.set_lives(player_lives)
 	if player_lives == 0:
@@ -40,4 +43,5 @@ func _on_enemy_spawner_enemy_spawned(enemy:Variant):
 func on_enemy_died():
 	score += 100
 	hud.set_score(score)
+	enemy_hit.play()
 	print("Score: ", score)
