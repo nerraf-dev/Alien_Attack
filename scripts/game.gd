@@ -45,3 +45,11 @@ func on_enemy_died():
 	hud.set_score(score)
 	enemy_hit.play()
 	print("Score: ", score)
+
+
+func _on_enemy_spawner_path_enemy_spawned(path_enemy:Variant):
+	# Add child first before connecting signals
+	# This is because the path_enemy will emit a signal when it dies
+	# and we want to connect to that signal before it is emitted
+	add_child(path_enemy)
+	path_enemy.enemy.connect("died", on_enemy_died)
